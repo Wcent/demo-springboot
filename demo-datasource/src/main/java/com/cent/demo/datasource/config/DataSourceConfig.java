@@ -24,6 +24,10 @@ public class DataSourceConfig {
     @Autowired
     private Environment environment;
 
+    /**
+     * 环境变量json配置
+     * mydatasource={"driver":"com.mysql.cj.jdbc.Driver", "url":"jdbc:mysql://localhost:3306/mytest?useSSL=false&allowPublicKeyRetrieval=true&useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC", "username":"root", "password":"123456"}
+     */
     @Value("${mydatasource}")
     private String myDataSourceJsonString;
 

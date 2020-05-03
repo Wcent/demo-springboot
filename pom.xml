@@ -17,6 +17,7 @@
 	<!-- project父pom此处定义多个子module -->
 	<modules>
 		<module>demo-datasource</module>
+		<module>demo-ms-datasource</module>
 	</modules>
 
 	<properties>
