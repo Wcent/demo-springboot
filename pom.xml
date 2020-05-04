@@ -18,6 +18,7 @@
 	<modules>
 		<module>demo-datasource</module>
 		<module>demo-ms-datasource</module>
+		<module>demo-dynamic-datasource</module>
 	</modules>
 
 	<properties>

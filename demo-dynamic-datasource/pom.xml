@@ -8,10 +8,10 @@
 		<version>0.0.1-SNAPSHOT</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<artifactId>demo-datasource</artifactId>
+	<artifactId>demo-dynamic-datasource</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>demo-datasource</name>
-	<description>数据源配置示例</description>
+	<name>demo-dynamic-datasource</name>
+	<description>读写分离动态数据源示例</description>
 
 	<properties>
 		<java.version>1.8</java.version>
@@ -20,14 +20,19 @@
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-data-jdbc</artifactId>
+			<artifactId>spring-boot-starter-aop</artifactId>
 		</dependency>
 
-		<!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
+		<dependency>
+			<groupId>org.mybatis.spring.boot</groupId>
+			<artifactId>mybatis-spring-boot-starter</artifactId>
+			<version>2.1.2</version>
+		</dependency>
+
 		<dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
-			<version>8.0.19</version>
+			<scope>runtime</scope>
 		</dependency>
 
 		<!-- https://mvnrepository.com/artifact/com.alibaba/fastjson -->
@@ -36,7 +41,6 @@
 			<artifactId>fastjson</artifactId>
 			<version>1.2.68</version>
 		</dependency>
-
 	</dependencies>
 
 	<build>

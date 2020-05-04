@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.cent.demo.dydatasource.mapper.write.SysCtlWritableDAO">
+    <sql id="SysCtlColumns">
+        ${alias}.id, ${alias}.name, ${alias}.ctl_value, ${alias}.status,
+        ${alias}.version, ${alias}.mnt_time, ${alias}.add_time
+    </sql>
+
+    <resultMap id="SysCtlDO" type="com.cent.demo.dydatasource.domain.SysCtlDO">
+        <id column="id" property="id"/>
+        <result column="name" property="name" />
+        <result column="ctl_value" property="ctlValue" />
+        <result column="status" property="status" />
+        <result column="version" property="version" />
+        <result column="mnt_time" property="mntTime" />
+        <result column="add_time" property="addTime" />
+    </resultMap>
+
+    <insert id="insertSysCtl" useGeneratedKeys="true" keyProperty="id"
+            parameterType="com.cent.demo.dydatasource.domain.SysCtlDO">
+        insert into
+        sys_ctl (id, name, ctl_value, status, version, mnt_time, add_time)
+        values (#{id}, #{name}, #{ctlValue}, #{status}, #{version}, #{mntTime}, #{addTime})
+    </insert>
+
+    <update id="updateSysCtlStatus" parameterType="com.cent.demo.dydatasource.domain.SysCtlDO">
+        update sys_ctl set
+        status = #{status}, version = version+1, mnt_time = #{mntTime}
+        where name = #{name} and version = #{version}
+    </update>
+
+    <delete id="deleteSysCtl" parameterType="com.cent.demo.dydatasource.domain.SysCtlDO">
+        delete from sys_ctl
+        where name = #{name} and version = #{version}
+    </delete>
+
+    <select id="getSysCtl" resultMap="SysCtlDO" parameterType="string">
+        select
+        <include refid="SysCtlColumns"><property name="alias" value="sys_ctl_t" /></include>
+        from sys_ctl sys_ctl_t
+        where name = #{name} limit 1
+    </select>
+
+    <select id="listSysCtl" resultMap="SysCtlDO">
+        select
+        <include refid="SysCtlColumns"><property name="alias" value="sys_ctl_t" /></include>
+        from sys_ctl sys_ctl_t
+    </select>
+</mapper>
