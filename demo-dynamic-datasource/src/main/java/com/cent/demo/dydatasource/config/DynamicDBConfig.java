@@ -4,7 +4,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.SqlSessionFactoryBean;
 import org.mybatis.spring.SqlSessionTemplate;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -24,14 +23,6 @@ import java.util.Map;
 @Configuration
 @Slf4j
 public class DynamicDBConfig {
-
-//    @Autowired
-//    @Qualifier("writableDataSource")
-//    private DataSource writableDataSource;
-//
-//    @Autowired
-//    @Qualifier("readableDataSource")
-//    private DataSource readableDataSource;
 
     @Primary
     @DependsOn({"writableDataSource", "readableDataSource"}) // 显式指定依赖，避免循环引用

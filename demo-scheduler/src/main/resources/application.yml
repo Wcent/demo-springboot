@@ -1,0 +1,29 @@
+
+
+#logging:
+#  level:
+#    root: info
+
+# spring actuator 应用监控（健康探测）
+management:
+  health:
+    diskspace:
+      enabled: true
+    db:
+      enabled: true
+    redis:
+      enabled: true
+  endpoint:
+    health:
+      # never：默认配置，不展示详细信息，up或者down的状态
+      # when-authorized：详细信息将会展示给通过认证的用户。授权的角色可以通过
+      # always：暴露详细信息
+      show-details: always
+
+# 环境变量配置
+spring:
+  datasource:
+    driver-class-name: ${dsDriver:com.mysql.cj.jdbc.Driver}
+    url: ${dsJdbcUrl:jdbc:mysql://localhost:3306/mytest?useSSL=false&allowPublicKeyRetrieval=true&useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC}
+    username: ${dsUsername:root}
+    password: ${dsPassword:123456}

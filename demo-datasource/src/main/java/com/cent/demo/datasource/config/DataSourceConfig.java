@@ -4,19 +4,20 @@ import com.alibaba.fastjson.JSON;
 import com.zaxxer.hikari.HikariDataSource;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.env.Environment;
+import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 
 import javax.sql.DataSource;
 
 /**
- * @class: DataSourceConfig
- * @description: 自定义数据源配置
- * @author: cent
- * @create: 2020/3/31
- **/
+ * 自定义数据源配置
+ *
+ * @author cent 2020/3/31
+ */
 @Configuration
 @Slf4j
 public class DataSourceConfig {
@@ -49,16 +50,24 @@ public class DataSourceConfig {
         log.debug("myJdbcConfig: {}", myJdbcConfig);
 
         HikariDataSource ds = new HikariDataSource();
+//        ds.setPoolName("HikariPool-My");
 //        ds.setDriverClassName(jdbcConfig.getDriver());
 //        ds.setJdbcUrl(jdbcConfig.getUrl());
 //        ds.setUsername(jdbcConfig.getUsername());
 //        ds.setPassword(jdbcConfig.getPassword());
 
+        ds.setPoolName("HikariPool-My");
         ds.setDriverClassName(myJdbcConfig.getDriver());
         ds.setJdbcUrl(myJdbcConfig.getUrl());
         ds.setUsername(myJdbcConfig.getUsername());
         ds.setPassword(myJdbcConfig.getPassword());
 
         return ds;
+    }
+
+    @Bean(name = "myTransactionManager")
+    public DataSourceTransactionManager transactionManager(
+            @Qualifier("myDataSource") DataSource dataSource) {
+        return new DataSourceTransactionManager(dataSource);
     }
 }

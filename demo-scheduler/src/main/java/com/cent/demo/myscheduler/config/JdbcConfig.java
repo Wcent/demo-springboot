@@ -1,4 +1,4 @@
-package com.cent.demo.datasource.config;
+package com.cent.demo.myscheduler.config;
 
 import lombok.Data;
 import org.springframework.beans.factory.annotation.Value;
@@ -6,7 +6,6 @@ import org.springframework.context.annotation.Configuration;
 
 /**
  * 自定义数据源配置
- *
  * @author cent 2020/4/25
  */
 @Configuration
