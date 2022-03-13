@@ -31,9 +31,9 @@ public class MasterDBConfig {
 
     /**
      * 环境变量json配置
-     * masterDS={"driver":"com.mysql.cj.jdbc.Driver", "url":"jdbc:mysql://localhost:3306/mytest?useSSL=false&allowPublicKeyRetrieval=true&useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC", "username":"root", "password":"123456"}
+     * masterDS={"driver":"com.mysql.cj.jdbc.Driver", "url":"jdbc:mysql://localhost:3306/mydata?characterEncoding=UTF-8&serverTimezone=Asia/Shanghai", "username":"root", "password":"123456"}
      */
-    @Value("${masterDS}")
+    @Value("${masterDS:{\"driver\":\"com.mysql.cj.jdbc.Driver\", \"url\":\"jdbc:mysql://localhost:3306/mydata?characterEncoding=UTF-8&serverTimezone=Asia/Shanghai\", \"username\":\"root\", \"password\":\"123456\"}}")
     private String masterJdbcString;
 
     @Primary

@@ -26,13 +26,13 @@ management:
 spring:
   datasource:
     driver-class-name: ${dsDriver:com.mysql.cj.jdbc.Driver}
-    url: ${dsJdbcUrl:jdbc:mysql://localhost:3306/mytest?useSSL=false&allowPublicKeyRetrieval=true&useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC}
+    url: ${dsJdbcUrl:jdbc:mysql://localhost:3306/mydata?characterEncoding=UTF-8&serverTimezone=Asia/Shanghai}
     username: ${dsUsername:root}
     password: ${dsPassword:123456}
 
 #spring:
 #  datasource:
 #    driver-class-name: com.mysql.cj.jdbc.Driver
-#    url: jdbc:mysql://localhost:3306/mytest?useSSL=false&allowPublicKeyRetrieval=true&useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC
+#    url: jdbc:mysql://localhost:3306/mydata?characterEncoding=UTF-8&serverTimezone=Asia/Shanghai
 #    username: root
 #    password: 123456

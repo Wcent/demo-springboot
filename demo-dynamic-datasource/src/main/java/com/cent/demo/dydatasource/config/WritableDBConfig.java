@@ -30,9 +30,9 @@ public class WritableDBConfig {
 
     /**
      * 环境变量json配置
-     * writableDS={"driver":"com.mysql.cj.jdbc.Driver", "url":"jdbc:mysql://localhost:3306/mytest?useSSL=false&allowPublicKeyRetrieval=true&useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC", "username":"root", "password":"123456"}
+     * writableDS={"driver":"com.mysql.cj.jdbc.Driver", "url":"jdbc:mysql://localhost:3306/mydata?characterEncoding=UTF-8&serverTimezone=Asia/Shanghai", "username":"root", "password":"123456"}
      */
-    @Value("${writableDS}")
+    @Value("${writableDS:{\"driver\":\"com.mysql.cj.jdbc.Driver\", \"url\":\"jdbc:mysql://localhost:3306/mydata?characterEncoding=UTF-8&serverTimezone=Asia/Shanghai\", \"username\":\"root\", \"password\":\"123456\"}}")
     private String writableJdbcString;
 
     @Bean("writableDataSource")

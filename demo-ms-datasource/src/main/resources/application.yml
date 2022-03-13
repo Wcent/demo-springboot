@@ -1,6 +1,7 @@
-#logging:
-#  level:
-#    root: info
+logging:
+  level:
+    root: info
+    com.cent.demo.msdatasource.config: debug
 
 # spring actuator 应用监控（健康探测）
 management:
@@ -22,6 +23,6 @@ management:
 spring:
   datasource:
     driver-class-name: ${dsDriver:com.mysql.cj.jdbc.Driver}
-    url: ${dsJdbcUrl:jdbc:mysql://localhost:3306/mytest?useSSL=false&allowPublicKeyRetrieval=true&useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC}
+    url: ${dsJdbcUrl:jdbc:mysql://localhost:3306//mydata?characterEncoding=UTF-8&serverTimezone=Asia/Shanghai}
     username: ${dsUsername:root}
     password: ${dsPassword:123456}
