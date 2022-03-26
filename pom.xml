@@ -22,6 +22,7 @@
 		<module>demo-dynamic-datasource</module>
 		<module>demo-scheduler</module>
 		<module>demo-redis</module>
+		<module>demo-rabbitmq</module>
 	</modules>
 
 	<properties>
